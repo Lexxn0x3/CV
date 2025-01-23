@@ -1,0 +1,150 @@
+\documentclass[a4paper,10pt]{article}
+
+% Packages
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry} % Page margins
+\usepackage{fontspec} % Custom fonts (use XeLaTeX or LuaLaTeX)
+\usepackage{graphicx} % For images
+\usepackage{multicol} % For two-column layout
+\usepackage{xcolor} % For colors
+\usepackage{titlesec} % Custom section titles
+\usepackage{enumitem} % Adjust lists
+\usepackage[hidelinks]{hyperref} % Hyperlinks
+\usepackage{fontawesome5} % For icons
+\usepackage{eso-pic}
+\usepackage[thinlines]{easytable}
+\usepackage[document]{ragged2e}
+
+% --- Configuration Section -----------------------------------------------------------------
+% Here, you can define personal details.
+% Change these values to customize the document.
+%\usepackage[english, german]{babel}
+\usepackage[german, english]{babel}
+\newcommand{\configName}{John Doe}
+\newcommand{\configAddress}{Example Street 123}
+\newcommand{\configCity}{12345 Sample City}
+\newcommand{\configCountry}{Germany}
+\newcommand{\configPhone}{+49 123 456 7890}
+\newcommand{\configEmail}{example@example.com}
+\newcommand{\configDateOfBirth}{01.01.1990 in Sampletown}
+%---------------------------------------------------------------------------------------------
+% Custom Colors
+\definecolor{darkblue}{HTML}{202e4b}
+\definecolor{lightgray}{HTML}{ECF0F1}
+
+% Dynamisch die Sprachdatei laden
+\iflanguage{german}{\input{strings-de.tex}}{\input{strings-en.tex}}
+
+% Custom Fonts
+\setmainfont{IBM Plex Sans} % Replacing with IBM Plex Sans
+
+% Section Title Styling
+\titleformat{\section}
+  {\fontsize{16}{16}\selectfont\color{darkblue}\fontspec{IBM Plex Sans}\normalfont}
+  {}
+  {0em}
+  {}[\vspace{0.3cm}\titlerule\vspace{0.1cm}]
+
+% Header
+\newcommand{\header}{
+    \begin{minipage}[t]{0.7\textwidth}
+        \vspace{0.5cm}
+        {\Huge\textcolor{white}{\textbf{\configName}}}
+        \vspace{0.2cm}\\
+        \href{http://cv.example.com}{\textcolor{white}{cv.example.com}} \textbar{} \href{http://dev.example.com}{\textcolor{white}{dev.example.com}}
+        \vspace{2.4cm}\\
+        \textbf{\fontsize{15}{15}\selectfont\textcolor{white}{\strResume}}\\[0.5em]
+    \end{minipage}
+
+    \vspace{1.5cm}
+}
+
+\newcommand\BackgroundPic{
+    \put(0,0){
+    \parbox[b][\paperheight]{\paperwidth}{%
+    \vfill
+    \centering
+    \includegraphics[width=\paperwidth,height=\paperheight]{header.pdf}
+    \vfill
+    }}}
+
+% Begin Document
+\begin{document}
+\pagestyle{empty}
+
+% Header
+\header
+
+\AddToShipoutPicture*{\BackgroundPic}
+
+% Custom two-column layout
+\noindent\begin{minipage}[t]{0.32\textwidth} % Left column (narrower)
+
+% Left Column Content
+\section*{\strAboutMe}
+Mit einem Hintergrund in Technik und Informatik, einschließlich Kenntnissen in Softwareentwicklung, Netzwerksicherheit und Cloud-Computing, habe ich umfassende Erfahrung in der Planung und Umsetzung technologischer Lösungen. Ich strebe stets danach, innovative und effiziente Systeme zu entwickeln.\\[1.8em]
+
+\section*{\strPersonalInfo}
+
+\begin{tabular}{cl}
+    \faHome & \configAddress \\
+            & \configCity \\
+     \\
+    \faMapMarker* & \configCountry \\
+    \\
+    \faPhone & \configPhone \\
+    \\
+    \faEnvelope[regular] & \href{mailto:\configEmail}{\configEmail} \\
+    \\
+    \faCalendar*[regular] & \configDateOfBirth \\
+\end{tabular}
+\\
+
+\vspace{1.8em}
+
+\section*{\strSkills}
+
+\fontsize{10}{13}\selectfont
+Python\\[0.1em]
+JavaScript\\[0.11em]
+SQL\\[0.1em]
+Docker\\[0.1em]
+Kubernetes\\[0.1em]
+IT-Sicherheit\\[0.1em]
+Cloud-Computing\\[0.1em]
+Linux-Administration\\[0.1em]
+Datenanalyse\\[0.1em]
+Projektmanagement
+
+\end{minipage} % End Left Column
+\hfill
+\begin{minipage}[t]{0.64\textwidth} % Right column (wider)
+
+% Right Column Content
+\section*{\strExperience}
+\textbf{Tech Solutions GmbH} \hfill \textcolor{darkblue}{\textbf{01.2020 - Heute}}\\
+IT-Projektmanager\\
+- Leitung von IT-Projekten zur Optimierung von Netzwerkinfrastrukturen\\
+- Einführung von Cloud-basierten Lösungen für Unternehmensprozesse\\
+- Verwaltung eines Teams von 10 Entwicklern und Ingenieuren\\[2em]
+
+\textbf{Innovative Systems AG} \hfill \textcolor{darkblue}{\textbf{07.2017 - 12.2019}}\\
+Softwareentwickler\\
+- Entwicklung und Implementierung von Webanwendungen\\
+- Optimierung von Datenbanken und Backend-Systemen\\
+- Zusammenarbeit mit cross-funktionalen Teams zur Produktauslieferung\\
+
+\vspace{3.5em}
+
+\section*{\strEducation}
+\textbf{Technische Hochschule Musterstadt} \hfill \textcolor{darkblue}{\textbf{09.2015 - 07.2017}}\\
+Master of Science in Informatik\\ 
+Schwerpunkt: Netzwerksicherheit\\[2em]
+\textbf{Universität Beispielhausen} \hfill \textcolor{darkblue}{\textbf{09.2012 - 07.2015}}\\
+Bachelor of Science in Informatik\\
+Schwerpunkt: Softwareentwicklung\\[2em]
+
+\end{minipage} % End Right Column
+
+\end{document}
+
+
